@@ -16,12 +16,15 @@ def main():
             line = sys.stdin.readline().rstrip()
             money, year = line.split(" ")
             money = better_round(float(money))
+            year = int(year)
             data.update({year:money})
         print(f"{country}:")
-        dict(sorted(data.items()))
-        for key in data.keys():
-            #print(f"{key} {"*" for }")
-            pass
+        for key in sorted(list(data.keys())):
+            print(f"{key} ",end="")
+            val = data[key]
+            for _ in range(int(better_round(val/1000))):
+                print("*",end="")
+            print()
 
 
 main()
