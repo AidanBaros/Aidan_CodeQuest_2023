@@ -1,16 +1,23 @@
+"""System Module"""
 import sys
 import math
-import string
 
-SEPARATOR = ":"
 
-cases = int(sys.stdin.readline().rstrip())
+def main():
 
-for caseNum in range(cases):
-    line = sys.stdin.readline().rstrip()
-    for caseNum2 in range(cases):
-        line2 = sys.stdin.readline().rstrip()
+    cases = int(sys.stdin.readline().rstrip())
+    for _ in range(cases):
+        cases2 = int(sys.stdin.readline().rstrip())
+        data = {}
+        for _ in range(cases2):
+            line = sys.stdin.readline().rstrip()
+            val1, val2 = (int(val) for val in line.split(" "))
+            distance = math.sqrt((val1*val1)+(val2*val2))
+            data.update({distance:[val1,val2]})
+        sorted(data)
+        for key in sorted(list(data.keys())):
+            print(*data[key])
 
-        x, y = (float(val) for val in line2.split(SEPARATOR))
 
-        
+
+main()

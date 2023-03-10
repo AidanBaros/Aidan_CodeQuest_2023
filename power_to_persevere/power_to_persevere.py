@@ -11,9 +11,10 @@ def main():
 
     cases = int(sys.stdin.readline().rstrip())
     for _ in range(cases):
-        line = (sys.stdin.readline().rstrip())
-        diadiameter, motor_revolutions, power_required, rpm, available_capacity, voltage, distance = (int(val) for val in line.split(" "))
-        circumference = math.pi*diadiameter
+        line = sys.stdin.readline().rstrip()
+        diameter, motor_revolutions, power_required, rpm, available_capacity, voltage, distance = (float(val) for val in line.split(" "))
+
+        circumference = math.pi*diameter
         cm_distance = distance*100
         rotations_of_wheel = cm_distance / circumference
         revolutions_of_motor = motor_revolutions * rotations_of_wheel
@@ -22,7 +23,7 @@ def main():
         amps = total_power / voltage
         ampere = amps * time
         ampere_hours = ampere/60
-        if ampere_hours <= available_capacity:
+        if ampere_hours < available_capacity:
             print(f"Success {better_round(time,4):.4f}")
         else:
             print("Fail")
