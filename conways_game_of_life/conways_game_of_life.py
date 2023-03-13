@@ -6,8 +6,10 @@ def check_alive(pos, grid):
     check_poses = [(-1,-1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)] 
     for poses in check_poses:
         try:
-            if grid[pos[1]+poses[1]][pos[0]+poses[0]] == 1:
-                num_alive += 1
+            check = grid[pos[1]+poses[1]][pos[0]+poses[0]]
+            if pos[1]+poses[1] >= 0 and pos[0]+poses[0] >= 0 and pos[1]+poses[1] < 10 and pos[0]+poses[0] < 10:
+                if grid[pos[1]+poses[1]][pos[0]+poses[0]] == 1:
+                    num_alive += 1
         except:
             pass
     return num_alive        
